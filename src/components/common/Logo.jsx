@@ -1,5 +1,5 @@
 import React from 'react'
-import {logoStyles as s } from '../../assets/dummystyles'; 
+import {logoStyles as s } from '../../assets/dummyStyles'; 
 import { Link } from 'react-router-dom'; 
 import {HiOutlineLibrary} from 'react-icons/hi';
 

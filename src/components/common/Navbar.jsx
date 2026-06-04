@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { navbarStyles as s } from "../../assets/dummystyles";
+import { navbarStyles as s } from "../../assets/dummyStyles";
 import Logo from "./Logo";
 import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";

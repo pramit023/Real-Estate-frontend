@@ -1,5 +1,5 @@
 import React from 'react'
-import { propertyCardStyles as s } from '../../assets/dummystyles'
+import { propertyCardStyles as s } from '../../assets/dummyStyles'
 import { useAuth } from '../../context/AuthContext'
 
 import { useNavigate,Link } from 'react-router-dom'
