@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import {loginStyles as s} from '../../../assets/dummystyles';
+import {loginStyles as s} from '../../../assets/dummyStyles';
 import Navbar from '../../../components/common/Navbar';
 import {useAuth} from '../../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';

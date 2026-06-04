@@ -1,5 +1,5 @@
 
-import {verifyEmailStyles as s} from '../../../assets/dummystyles';
+import {verifyEmailStyles as s} from '../../../assets/dummyStyles';
 import Navbar from '../../../components/common/Navbar';
 import React, { useState } from "react";
 import axios from "axios";
