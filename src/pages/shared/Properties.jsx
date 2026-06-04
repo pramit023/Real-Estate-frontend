@@ -1,5 +1,5 @@
 import React from 'react'
-import { propertiesStyles as s } from '../../assets/dummystyles';
+import { propertiesStyles as s } from '../../assets/dummyStyles';
 import { useAuth } from '../../context/AuthContext';
 import Navbar from '../../components/common/Navbar';
 import { HiFilter,HiX,HiSearch, HiViewGrid, HiViewList,HiAdjustments } from 'react-icons/hi';

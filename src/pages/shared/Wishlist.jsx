@@ -6,7 +6,7 @@ import API_URL from '../../../config';
 import Navbar from '../../components/common/Navbar';
 import PropertyCard from '../../components/common/PropertyCard';
 import { useAuth } from '../../context/AuthContext';
-import { wishlistStyles as s } from '../../assets/dummystyles';
+import { wishlistStyles as s } from '../../assets/dummyStyles';
 
 const Wishlist = () => {
   const { token } = useAuth();

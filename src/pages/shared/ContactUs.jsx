@@ -4,7 +4,7 @@ import { HiCheckCircle, HiMail, HiOutlineChatAlt2, HiPhone, HiUser } from 'react
 import API_URL from '../../../config';
 import Navbar from '../../components/common/Navbar';
 import { useAuth } from '../../context/AuthContext';
-import { contactStyles as s } from '../../assets/dummystyles';
+import { contactStyles as s } from '../../assets/dummyStyles';
 
 const ContactUs = () => {
   const { user } = useAuth();

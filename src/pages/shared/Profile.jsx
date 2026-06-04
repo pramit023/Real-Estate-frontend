@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { profileStyles as s } from '../../assets/dummystyles';
+import { profileStyles as s } from '../../assets/dummyStyles';
 import { useAuth } from '../../context/AuthContext';
 import Navbar from '../../components/common/Navbar';
 
