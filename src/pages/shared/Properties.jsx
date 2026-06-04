@@ -232,7 +232,7 @@ const [viewMode, setViewMode] = useState("grid");
       <Navbar />
       <div className={s.container}>
       <div className={s.mobileFilterButtonWrapper}>
-        <button onClick={()=> setShowMobileFilters(true)}
+        <button type="button" onClick={()=> setShowMobileFilters(true)}
         className={s.mobileFilterButton}
         >
           <HiFilter/> Show filter & Search
@@ -241,17 +241,17 @@ const [viewMode, setViewMode] = useState("grid");
         </div>
         <div className={s.layout}>
             <aside
-           className={`${s.sidebar} ${showMobileFilters ? s.sidebarVisible:""}`}>
+           className={`${s.sidebar} ${showMobileFilters ? s.sidebarVisible : s.sidebarHidden}`}>
                <div className={s.sidebarHeader}>
               <div className={s.sidebarTitleWrapper}>
                <HiFilter className={s.sidebarTitleIcon} />
                    <h2 className={s.sidebarTitle}>Filters</h2>
                        </div>
                   <div className={s.sidebarHeaderActions}>
-                <button onClick={resetFilters} className={s.resetButton}>
+                <button type="button" onClick={resetFilters} className={s.resetButton}>
                      Reset
                   </button>
-                  <button className={s.closeMobileFilters} onClick={()=> setShowMobileFilters(false)}>
+                  <button type="button" className={s.closeMobileFilters} onClick={()=> setShowMobileFilters(false)}>
                     <HiX/>
                   </button>
                      </div>
@@ -325,7 +325,7 @@ const [viewMode, setViewMode] = useState("grid");
                     <label className={s.filterLabel}>BHK (Bedrooms)</label>
                           <div className={s.bhkGroup}>
                                {bhkOptions.map((option) => (
-                          <button key={option} onClick={() =>handleBhkSelect(option)} 
+                          <button type="button" key={option} onClick={() =>handleBhkSelect(option)} 
                           className={`${s.bhkButton} ${ 
                             filters.bhk === option
                             ? s.bhkButtonActive
@@ -372,6 +372,7 @@ const [viewMode, setViewMode] = useState("grid");
                      <div className={s.headerControls}>
                      <div className={s.viewModeToggle}>
                           <button
+                             type="button"
                              onClick={() => setViewMode("grid")}
                               className={`${s.viewModeButton} ${
                                             viewMode === "grid"
@@ -382,6 +383,7 @@ const [viewMode, setViewMode] = useState("grid");
                             <HiViewGrid size={20} />
                            </button>
                            <button
+                            type="button"
                             onClick={() => setViewMode("list")}
                                   className={`${s.viewModeButton} ${
                                        viewMode === "list"
@@ -424,7 +426,7 @@ const [viewMode, setViewMode] = useState("grid");
                           <div className={s.errorContainer}>
                             <HiX size={48} className={s.errorIcon}/>
                               <h3 className={s.errorTitle}>{error}</h3>
-                      <button onClick={applyFilters} className={s.errorButton}>
+                      <button type="button" onClick={applyFilters} className={s.errorButton}>
                            Try Again
                            </button>
                     </div>
@@ -437,7 +439,7 @@ const [viewMode, setViewMode] = useState("grid");
                     <p className={s.emptyText}>
                         Broadeb your search criteria
                    </p>
-                   <button onClick={resetFilters} className={s.emptyButton}>
+                   <button type="button" onClick={resetFilters} className={s.emptyButton}>
                     ClearAll
 
                    </button>

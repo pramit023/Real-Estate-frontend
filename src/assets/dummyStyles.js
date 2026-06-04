@@ -785,9 +785,9 @@ export const propertiesStyles = {
   layout: "properties-layout grid grid-cols-[minmax(280px,300px)_1fr] gap-8 max-[1024px]:grid-cols-1",
 
   // Sidebar
-  sidebar: "filters-sidebar scrollbar-hide bg-white rounded-[1.5rem] p-8 shadow-[0_4px_20px_rgba(0,0,0,0.03)] max-h-[calc(100vh-120px)] overflow-y-auto sticky top-[100px] border border-[#f1f5f9] z-[90] max-[1024px]:fixed max-[1024px]:max-h-screen max-[1024px]:top-0 max-[1024px]:bottom-0 max-[1024px]:w-full max-[1024px]:max-w-[350px] max-[1024px]:rounded-none max-[1024px]:transition-[left] max-[1024px]:duration-300 max-[1024px]:ease max-[1024px]:z-[2005]",
-  sidebarVisible: "max-[1024px]:left-0",
-  sidebarHidden: "max-[1024px]:-left-full",
+  sidebar: "filters-sidebar scrollbar-hide bg-white rounded-[1.5rem] p-8 shadow-[0_4px_20px_rgba(0,0,0,0.03)] max-h-[calc(100vh-120px)] overflow-y-auto sticky top-[100px] border border-[#f1f5f9] z-[90] max-[1024px]:fixed max-[1024px]:max-h-screen max-[1024px]:top-0 max-[1024px]:bottom-0 max-[1024px]:left-0 max-[1024px]:w-full max-[1024px]:max-w-[350px] max-[1024px]:rounded-none max-[1024px]:transition-transform max-[1024px]:duration-300 max-[1024px]:ease-in-out max-[1024px]:z-[2005]",
+  sidebarVisible: "max-[1024px]:translate-x-0",
+  sidebarHidden: "max-[1024px]:-translate-x-full",
   sidebarHeader: "flex justify-between items-center mb-8",
   sidebarTitleWrapper: "flex items-center gap-2",
   sidebarTitleIcon: "text-primary",
