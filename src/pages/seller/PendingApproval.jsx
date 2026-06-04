@@ -20,7 +20,7 @@ const PendingApproval = ({ userName, onCheckStatus }) => {
 
         <p className="mx-auto mb-10 max-w-[500px] text-[1.0625rem] leading-[1.7] text-[#6b7280]">
           Hello {userName}, your seller account is currently under review by our administration team.
-          Approval usually takes less than 24 hours. You&apos;ll gain full dashboard access on verified.
+          Approval usually takes less than 24 hours. You'll gain full dashboard access on verified.
         </p>
 
         <div className="mb-16 flex flex-col justify-center gap-4 sm:flex-row">
@@ -45,7 +45,7 @@ const PendingApproval = ({ userName, onCheckStatus }) => {
           <HiQuestionMarkCircle className="text-[#9ca3af]" />
           <span className="text-[#94a3b8]">Need help?</span>
           <button
-            onClick={() => navigate('/contact')}
+            onClick={() => navigate('/support')}
             className="cursor-pointer border-none bg-transparent p-0 font-bold text-primary hover:underline"
             type="button"
           >

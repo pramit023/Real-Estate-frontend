@@ -94,12 +94,14 @@ const [viewMode, setViewMode] = useState("grid");
         params.append("maxPrice", currentFilters.maxPrice);
       if (currentFilters.furnishing && currentFilters.furnishing.length > 0)
         params.append("furnishing", currentFilters.furnishing.join(","));
+      if (currentFilters.amenities && currentFilters.amenities.length > 0)
+        params.append("amenities", currentFilters.amenities.join(","));
       if (currentFilters.sort) params.append("sort", currentFilters.sort);
 
       const res = await axios.get(
         `${API_URL}/api/property?${params.toString()}`,
       );
-      setProperties(res.data.properties);
+      setProperties(res.data.properties || []);
       setError(null);
     } catch {
       setError("Failed to load properties. Please try again later.");
@@ -113,18 +115,24 @@ const [viewMode, setViewMode] = useState("grid");
       const queryParams = new URLSearchParams(location.search);
       const city = queryParams.get("city") || "";
       const type = queryParams.get("type") || "";
+      const propertyType = queryParams.get("propertyType") || type;
       const bhk = queryParams.get("bhk") || "";
+      const maxPrice = Number(queryParams.get("maxPrice")) || 100000000;
+      const furnishing = queryParams.get("furnishing") || "";
+      const amenities = queryParams.get("amenities") || "";
+      const sort = queryParams.get("sort") || "latest";
 
       const initialFilters = {
         city,
-        propertyType: type ? [type] : [],
+        propertyType: propertyType ? propertyType.split(",").filter(Boolean) : [],
         bhk,
-        maxPrice: 100000000,
-        amenities: [],
-        furnishing: [],
-        sort: "latest",
+        maxPrice,
+        amenities: amenities ? amenities.split(",").filter(Boolean) : [],
+        furnishing: furnishing ? furnishing.split(",").filter(Boolean) : [],
+        sort,
       };
 
+      setFilters(initialFilters);
       fetchProperties(initialFilters);
       if (user) {
         fetchWishlist();
@@ -133,6 +141,23 @@ const [viewMode, setViewMode] = useState("grid");
   }, [fetchProperties, fetchWishlist, location.search, user]);
 
   const fetchTimer = useRef(null);
+
+  const updateFilterUrl = (updatedFilters) => {
+    const params = new URLSearchParams();
+    if (updatedFilters.city) params.set("city", updatedFilters.city);
+    if (updatedFilters.propertyType?.length) params.set("propertyType", updatedFilters.propertyType.join(","));
+    if (updatedFilters.bhk) params.set("bhk", updatedFilters.bhk);
+    if (updatedFilters.maxPrice && updatedFilters.maxPrice !== 100000000) params.set("maxPrice", updatedFilters.maxPrice);
+    if (updatedFilters.furnishing?.length) params.set("furnishing", updatedFilters.furnishing.join(","));
+    if (updatedFilters.amenities?.length) params.set("amenities", updatedFilters.amenities.join(","));
+    if (updatedFilters.sort && updatedFilters.sort !== "latest") params.set("sort", updatedFilters.sort);
+
+    navigate({
+      pathname: "/properties",
+      search: params.toString(),
+    }, { replace: true });
+  };
+
   const debouncedFetch = (updatedFilters) => {
     if (fetchTimer.current) clearTimeout(fetchTimer.current);
     fetchTimer.current = setTimeout(() => {
@@ -150,6 +175,7 @@ const [viewMode, setViewMode] = useState("grid");
     }
     const updatedFilters = { ...filters, [category]: current };
     setFilters(updatedFilters);
+    updateFilterUrl(updatedFilters);
     fetchProperties(updatedFilters);
   };
 
@@ -157,6 +183,7 @@ const [viewMode, setViewMode] = useState("grid");
     const value = parseInt(e.target.value);
     const updatedFilters = { ...filters, maxPrice: value };
     setFilters(updatedFilters);
+    updateFilterUrl(updatedFilters);
     debouncedFetch(updatedFilters);
   };
 
@@ -166,6 +193,7 @@ const [viewMode, setViewMode] = useState("grid");
       bhk: filters.bhk === value ? "" : value,
     };
     setFilters(updatedFilters);
+    updateFilterUrl(updatedFilters);
     fetchProperties(updatedFilters);
   };
 
@@ -173,6 +201,7 @@ const [viewMode, setViewMode] = useState("grid");
     const newSort = e.target.value;
     const updatedFilters = { ...filters, sort: newSort };
     setFilters(updatedFilters);
+    updateFilterUrl(updatedFilters);
     fetchProperties(updatedFilters);
   };
 
@@ -242,6 +271,7 @@ const [viewMode, setViewMode] = useState("grid");
                               city: e.target.value,
                     };
                     setFilters(updatedFilters);
+                    updateFilterUrl(updatedFilters);
                     debouncedFetch(updatedFilters);
                            }}
                            className={s.searchInput}
