@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import{landingPageStyles as s } from '../../assets/dummystyles';
+import{landingPageStyles as s } from '../../assets/dummyStyles';
 import Navbar from '../../components/common/Navbar';
 import {
   HiHome,
