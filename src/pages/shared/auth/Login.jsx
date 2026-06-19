@@ -70,7 +70,7 @@ const handleChange = (e) => {
             </div>
            <div style={{ position: "relative" }}>
             <input type={showPassword? "text": "password"}
-            name="password" placeholder="......" value={formData.password}
+            name="password" placeholder="password" value={formData.password}
                 onChange={handleChange } required className={s.input}
                   style={{paddingRight:"40px"}} />
                 <button
@@ -111,7 +111,6 @@ const handleChange = (e) => {
              </p>
 
         
-
         </div>
       </div>
     </div>
