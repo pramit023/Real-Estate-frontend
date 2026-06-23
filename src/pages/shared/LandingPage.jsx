@@ -105,8 +105,15 @@ const fetchCounts=useCallback(async()=>{
   const fetchProperties=useCallback(async(search="")=>{
     try{
       setLoading(true);
-      const res=await axios.get(`${API_URL}/api/property?city=${search}`);
-      setProperties(res.data.properties || res.data || []);
+      const params = new URLSearchParams();
+      if (search.trim()) params.append("city", search.trim());
+      const res=await axios.get(`${API_URL}/api/property?${params.toString()}`);
+      const fetchedProperties = Array.isArray(res.data?.properties)
+        ? res.data.properties
+        : Array.isArray(res.data)
+          ? res.data
+          : [];
+      setProperties(fetchedProperties);
       setError(null);
     }catch{
       setError("Failed to load properties.please try again");
@@ -131,7 +138,7 @@ useEffect(() => {
     e.preventDefault();
    const params = new URLSearchParams();
    if (searchTerm) params.append("city", searchTerm);
-   if (propertyType !== "Select Type") params.append("type", propertyType);  
+   if (propertyType !== "Select Type") params.append("propertyType", propertyType);  
    navigate(`/properties?${params.toString()}`);
 
 };
